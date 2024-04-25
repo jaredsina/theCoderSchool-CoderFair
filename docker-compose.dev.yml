@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  server:
+    image: coderfair-backend-dev
+    # build:
+    #   context: .
+    #   dockerfile: dev.Dockerfile
+    volumes:
+      - ./backend:/usr/src/app/backend
+    container_name: coderfair-backend-server-dev-container
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    shm_size: 128mb
+    volumes:
+      - ./postgres_data:/var/lib/postgressql/data
+    environment:
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+    container_name: coderfair-db-dev-container
+# docker run -it -v "$(pwd):/usr/src/app/backend" toolkit-backend-dev bash
