@@ -11,10 +11,11 @@ const isPort = (port: unknown): port is number => {
 };
 
 const parsePort = (port: unknown): number => {
-  if (!port || !isPort(port)) {
+  const portNumber = Number(port);
+  if (!port || !isPort(portNumber)) {
     throw new Error("Incorrect or missing PORT" + port);
   }
-  return port;
+  return portNumber;
 };
 
 const parseDbUrl = (url: unknown): string => {
