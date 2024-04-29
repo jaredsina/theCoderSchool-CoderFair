@@ -20,4 +20,4 @@ const start = async () => {
   });
 };
 
-start();
+start().catch((error) => console.error(error));
