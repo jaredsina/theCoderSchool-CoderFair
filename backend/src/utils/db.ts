@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
-import { dbConfig } from "./config";
+import { DATABASE_URL } from "./config";
 
-const sequelize = new Sequelize(dbConfig.DATABASE_URL);
+const sequelize = new Sequelize(DATABASE_URL);
 
 export const connectToDatabase = async () => {
   try {

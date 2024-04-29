@@ -1,11 +1,6 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 
-interface Env {
-  DATABASE_URL: string;
-  SERVER_PORT: number;
-}
-
 const isPort = (port: unknown): port is number => {
   return Number.isInteger(port);
 };
@@ -25,7 +20,5 @@ const parseDbUrl = (url: unknown): string => {
   return url;
 };
 
-export const dbConfig: Env = {
-  DATABASE_URL: parseDbUrl(process.env.DATABASE_URL),
-  SERVER_PORT: parsePort(process.env.SERVER_PORT),
-};
+export const DATABASE_URL: string = parseDbUrl(process.env.DATABASE_URL);
+export const SERVER_PORT: number = parsePort(process.env.SERVER_PORT);
