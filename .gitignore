@@ -1,3 +1,6 @@
+#tsc build folder
+build/
+
 #vscode settings
 .vscode/
 
