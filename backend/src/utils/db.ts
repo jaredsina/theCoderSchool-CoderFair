@@ -3,9 +3,9 @@ import { DATABASE_URL } from "./config";
 import { SequelizeStorage, Umzug } from "umzug";
 
 // Sequelize streamlines interaction between the application and our postgresql database
-export const sequelize = new Sequelize(DATABASE_URL);
+export const sequelize: Sequelize = new Sequelize(DATABASE_URL);
 
-// Configuration for the Umzug migrator
+// Configuration for the Umzug migrators
 const migrationConf = {
   migrations: {
     glob: "migrations/*.ts",
@@ -16,7 +16,7 @@ const migrationConf = {
 };
 
 // Rolls back the latest migration file. Run it from the command line script 'rollback'
-export const rollBackMigrations = async () => {
+export const rollBackMigrations = async (): Promise<void> => {
   // Need to authenticate because we are running this seperate from the express app
   await sequelize.authenticate();
   const migrator = new Umzug(migrationConf);
@@ -24,7 +24,7 @@ export const rollBackMigrations = async () => {
 };
 
 // Umzug allows the use of migration files to update the database schema smoothly over time
-const runMigrations = async () => {
+const runMigrations = async (): Promise<void> => {
   const migrator = new Umzug(migrationConf);
 
   const migrations = await migrator.up();
@@ -35,7 +35,7 @@ const runMigrations = async () => {
   });
 };
 
-export const connectToDatabase = async () => {
+export const connectToDatabase = async (): Promise<void> => {
   try {
     console.log("Trying to connect to database...");
     await sequelize.authenticate();
