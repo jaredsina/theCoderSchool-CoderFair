@@ -14,6 +14,7 @@ export const up = async (): Promise<void> => {
     passwordHash: { type: DataTypes.STRING, allowNull: false },
   });
 };
+
 export const down = async (): Promise<void> => {
   await queryInterface.dropTable("users");
 };
