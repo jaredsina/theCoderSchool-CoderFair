@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { connectToDatabase } from "./utils/db";
+import { connectToDatabase } from "./db/index";
 import { SERVER_PORT } from "./utils/config";
 
 dotenv.config();

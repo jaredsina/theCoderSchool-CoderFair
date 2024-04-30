@@ -1,17 +1,16 @@
 import { Sequelize } from "sequelize";
-import { DATABASE_URL } from "./config";
-import { SequelizeStorage, Umzug } from "umzug";
+import { DATABASE_URL } from "../utils/config";
+import { SequelizeStorage, Umzug, UmzugOptions } from "umzug";
 
 // Sequelize streamlines interaction between the application and our postgresql database
 export const sequelize: Sequelize = new Sequelize(DATABASE_URL);
 
 // Configuration for the Umzug migrators
-const migrationConf = {
+const migrationConf: UmzugOptions = {
   migrations: {
-    glob: "migrations/*.ts",
+    glob: "src/db/migrations/*.ts",
   },
   storage: new SequelizeStorage({ sequelize, tableName: "migrations" }),
-  context: sequelize.getQueryInterface(),
   logger: console,
 };
 
@@ -26,12 +25,9 @@ export const rollBackMigrations = async (): Promise<void> => {
 // Umzug allows the use of migration files to update the database schema smoothly over time
 const runMigrations = async (): Promise<void> => {
   const migrator = new Umzug(migrationConf);
-
   const migrations = await migrator.up();
   console.log("Migrations up to date", {
-    files: migrations.map((mig) => {
-      mig.name;
-    }),
+    files: migrations.map((mig) => mig.name),
   });
 };
 
