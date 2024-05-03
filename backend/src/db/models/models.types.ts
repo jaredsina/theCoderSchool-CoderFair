@@ -40,6 +40,20 @@ export class Project extends Model<
   declare rank: CreationOptional<number | null>;
   declare overall_score: CreationOptional<number | null>;
   declare notes: CreationOptional<string | null>;
+
+export class Coderfairs extends Model<
+  InferAttributes<Coderfairs>,
+  InferCreationAttributes<Coderfairs>
+> {
+  declare id: CreationOptional<number>;
+  declare fairDate: Date;
+  declare description: string | null;
+
+  // timestamps!
+  // createdAt can be undefined during creation
+  declare createdAt: CreationOptional<Date>;
+  // updatedAt can be undefined during creation
+  declare updatedAt: CreationOptional<Date>;
 }
 
 export enum Tables {
