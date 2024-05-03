@@ -101,6 +101,14 @@ export class Grades extends Model<
   declare overall_comments: string | null;
 }
 
+export class Questions extends Model<
+  InferAttributes<Questions>,
+  InferCreationAttributes<Questions>
+> {
+  declare id: CreationOptional<number>;
+  declare question: string;
+}
+
 export enum Tables {
   Projects = "projects",
   Users = "users",
