@@ -74,6 +74,14 @@ export class Judges extends Model<
   declare coderfair_id: ForeignKey<Coderfairs["id"]>;
 }
 
+export class Roles extends Model<
+  InferAttributes<Roles>,
+  InferCreationAttributes<Roles>
+> {
+  declare id: CreationOptional<number>;
+  declare name: string;
+}
+
 export enum Tables {
   Projects = "projects",
   Users = "users",
