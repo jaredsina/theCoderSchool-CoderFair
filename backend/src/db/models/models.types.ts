@@ -38,8 +38,6 @@ export class Project extends Model<
   declare coding_language: string;
   declare project_username: string;
   declare project_password: string;
-  declare rank: CreationOptional<number | null>;
-  declare overall_score: CreationOptional<number | null>;
   declare notes: CreationOptional<string | null>;
 
   // timestamps!
