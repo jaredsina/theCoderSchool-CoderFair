@@ -82,6 +82,15 @@ export class Roles extends Model<
   declare name: string;
 }
 
+export class User_Roles extends Model<
+  InferAttributes<User_Roles>,
+  InferCreationAttributes<User_Roles>
+> {
+  declare id: CreationOptional<number>;
+  declare user_id: ForeignKey<User["id"]>;
+  declare role_id: ForeignKey<Roles["id"]>;
+}
+
 export enum Tables {
   Projects = "projects",
   Users = "users",
