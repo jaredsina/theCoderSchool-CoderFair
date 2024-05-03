@@ -109,6 +109,17 @@ export class Questions extends Model<
   declare question: string;
 }
 
+export class Questions_Grades extends Model<
+  InferAttributes<Questions_Grades>,
+  InferCreationAttributes<Questions_Grades>
+> {
+  declare id: CreationOptional<number>;
+  declare grade_id: ForeignKey<Grades["id"]>;
+  declare question_id: ForeignKey<Questions["id"]>;
+  declare score: number;
+  declare comments: string | null;
+}
+
 export enum Tables {
   Projects = "projects",
   Users = "users",
