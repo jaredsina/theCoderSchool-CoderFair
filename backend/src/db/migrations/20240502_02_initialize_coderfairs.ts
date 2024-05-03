@@ -29,8 +29,14 @@ export const up = async (): Promise<void> => {
       allowNull: false,
     },
   });
+  await queryInterface.addColumn("projects", "coderfair_id", {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: { model: "coderfairs", key: "id" },
+  });
 };
 
 export const down = async (): Promise<void> => {
   await queryInterface.dropTable("coderfairs");
+  await queryInterface.removeColumn("projects", "coderfair_id");
 };
