@@ -91,6 +91,16 @@ export class User_Roles extends Model<
   declare role_id: ForeignKey<Roles["id"]>;
 }
 
+export class Grades extends Model<
+  InferAttributes<Grades>,
+  InferCreationAttributes<Grades>
+> {
+  declare id: CreationOptional<number>;
+  declare judge_id: ForeignKey<Judges["id"]>;
+  declare project_id: ForeignKey<Project["id"]>;
+  declare overall_comments: string | null;
+}
+
 export enum Tables {
   Projects = "projects",
   Users = "users",
