@@ -1,11 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../index";
-import { User_Roles } from "../models/models.types";
 
 const queryInterface = sequelize.getQueryInterface();
 
-export const up = async () => {
-  await queryInterface.createTable<User_Roles>("user_roles", {
+export const up = async (): Promise<void> => {
+  await queryInterface.createTable("user_roles", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     user_id: {
       type: DataTypes.INTEGER,
@@ -20,6 +19,6 @@ export const up = async () => {
   });
 };
 
-export const down = async () => {
+export const down = async (): Promise<void> => {
   await queryInterface.dropTable("user_roles");
 };

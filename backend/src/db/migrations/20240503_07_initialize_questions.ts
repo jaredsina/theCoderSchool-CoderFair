@@ -1,11 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../index";
-import { Questions } from "../models/models.types";
 
 const queryInterface = sequelize.getQueryInterface();
 
-export const up = async () => {
-  await queryInterface.createTable<Questions>("questions", {
+export const up = async (): Promise<void> => {
+  await queryInterface.createTable("questions", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -18,6 +17,6 @@ export const up = async () => {
   });
 };
 
-export const down = async () => {
+export const down = async (): Promise<void> => {
   await queryInterface.dropTable("questions");
 };

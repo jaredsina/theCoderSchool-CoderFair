@@ -1,11 +1,10 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../index";
-import { Coderfairs } from "../models/models.types";
 
 const queryInterface = sequelize.getQueryInterface();
 
 export const up = async (): Promise<void> => {
-  await queryInterface.createTable<Coderfairs>("coderfairs", {
+  await queryInterface.createTable("coderfairs", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

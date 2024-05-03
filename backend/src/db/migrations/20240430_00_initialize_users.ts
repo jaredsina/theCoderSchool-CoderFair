@@ -1,12 +1,11 @@
 import { DataTypes, QueryInterface } from "sequelize";
 import { sequelize } from "../index";
-import { User } from "../models/models.types";
 
 // Allows interaction with the database
 const queryInterface: QueryInterface = sequelize.getQueryInterface();
 
 export const up = async (): Promise<void> => {
-  await queryInterface.createTable<User>("users", {
+  await queryInterface.createTable("users", {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     firstName: { type: DataTypes.STRING, allowNull: false },
     lastName: { type: DataTypes.STRING, allowNull: false },
