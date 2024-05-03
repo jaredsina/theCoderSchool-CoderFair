@@ -117,8 +117,3 @@ export class Questions_Grades extends Model<
   declare score: number;
   declare comments: string | null;
 }
-
-export enum Tables {
-  Projects = "projects",
-  Users = "users",
-}
