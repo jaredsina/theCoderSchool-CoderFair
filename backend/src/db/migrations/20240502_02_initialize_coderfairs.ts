@@ -10,7 +10,7 @@ export const up = async (): Promise<void> => {
       primaryKey: true,
       autoIncrement: true,
     },
-    fairDate: {
+    fair_date: {
       type: DataTypes.DATE,
       allowNull: false,
       unique: true,
@@ -19,11 +19,11 @@ export const up = async (): Promise<void> => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdAt: {
+    created_at: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    updatedAt: {
+    updated_at: {
       type: DataTypes.DATE,
       allowNull: false,
     },
