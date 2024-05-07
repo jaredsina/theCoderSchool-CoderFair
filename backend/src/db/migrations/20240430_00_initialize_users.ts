@@ -12,6 +12,8 @@ export const up = async (): Promise<void> => {
     email: { type: DataTypes.STRING, allowNull: false },
     username: { type: DataTypes.STRING, allowNull: false },
     password_hash: { type: DataTypes.STRING, allowNull: false },
+    created_at: { type: DataTypes.DATE },
+    updated_at: { type: DataTypes.DATE },
   });
 };
 
