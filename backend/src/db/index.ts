@@ -37,7 +37,6 @@ export const connectToDatabase = async (): Promise<void> => {
     await sequelize.authenticate();
     await runMigrations();
     console.log("Connection established successfully");
-    await sequelize.close();
   } catch (error) {
     console.log("Error connecting to database" + error);
   }
