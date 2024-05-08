@@ -6,6 +6,8 @@ services:
     # build:
     #   context: .
     #   dockerfile: dev.Dockerfile
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - ./backend:/usr/src/app/backend
     container_name: coderfair-backend-server-dev-container
