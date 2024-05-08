@@ -1,6 +1,7 @@
 import { User } from "./Users";
 import { Project } from "./Projects";
 import { Coderfairs } from "./Coderfair";
+import { Judges } from "./Judges";
 
 User.hasMany(Project, {
   sourceKey: "id",
@@ -14,4 +15,15 @@ Project.hasMany(Project, {
   as: "projects",
 });
 
-export { User, Project, Coderfairs };
+User.belongsToMany(Coderfairs, {
+  through: Judges,
+  sourceKey: "id",
+  foreignKey: "user_id",
+});
+Coderfairs.belongsToMany(User, {
+  through: Judges,
+  sourceKey: "id",
+  foreignKey: "coderfair_id",
+});
+
+export { User, Project, Coderfairs, Judges };
