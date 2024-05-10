@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { User } from "./models.types";
+import { User } from "../../types/models.types";
 import { sequelize } from "../index";
 
 User.init(

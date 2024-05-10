@@ -1,4 +1,4 @@
-import { Judges } from "./models.types";
+import { Judges } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 

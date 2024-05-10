@@ -1,4 +1,4 @@
-import { Questions } from "./models.types";
+import { Questions } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 

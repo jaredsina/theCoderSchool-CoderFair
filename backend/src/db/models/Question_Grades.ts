@@ -1,4 +1,4 @@
-import { Questions_Grades } from "./models.types";
+import { Questions_Grades } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 

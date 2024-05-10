@@ -1,4 +1,4 @@
-import { Coderfairs } from "./models.types";
+import { Coderfairs } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 

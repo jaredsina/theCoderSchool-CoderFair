@@ -1,6 +1,14 @@
 import {
+  Association,
   CreationOptional,
   ForeignKey,
+  HasManyAddAssociationMixin,
+  HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
+  HasManyHasAssociationMixin,
+  HasManyRemoveAssociationMixin,
+  HasManySetAssociationsMixin,
   InferAttributes,
   InferCreationAttributes,
   Model,
@@ -22,6 +30,24 @@ export class User extends Model<
   declare createdAt: CreationOptional<Date>;
   // updatedAt can be undefined during creation
   declare updatedAt: CreationOptional<Date>;
+
+  // Since TS cannot determine model association at compile time
+  // we have to declare them here purely virtually
+  // these will not exist until `Model.init` was called.
+  declare getProjects: HasManyGetAssociationsMixin<Project>; // can return null
+  declare addProject: HasManyAddAssociationMixin<Project, number>;
+  declare addProjects: HasManyAddAssociationMixin<Project, number>;
+  declare setProjects: HasManySetAssociationsMixin<Project, number>;
+  declare removeProject: HasManyRemoveAssociationMixin<Project, number>;
+  declare removeProjects: HasManyRemoveAssociationMixin<Project, number>;
+  declare hasProject: HasManyHasAssociationMixin<Project, number>;
+  declare hasProjects: HasManyHasAssociationMixin<Project, number>;
+  declare countProjects: HasManyCountAssociationsMixin;
+  declare createProject: HasManyCreateAssociationMixin<Project, "student_id">;
+
+  declare static associations: {
+    projects: Association<User, Project>;
+  };
 }
 
 export class Project extends Model<

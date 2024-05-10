@@ -1,4 +1,4 @@
-import { User_Roles } from "./models.types";
+import { User_Roles } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 

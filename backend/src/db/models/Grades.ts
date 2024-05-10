@@ -1,4 +1,4 @@
-import { Grades } from "./models.types";
+import { Grades } from "../../types/models.types";
 import { sequelize } from "../index";
 import { DataTypes } from "sequelize";
 
