@@ -1,5 +1,5 @@
 import { NextFunction, Response } from "express";
-import { RequestToken } from "./middleware.types";
+import { RequestToken } from "../types/middleware.types";
 
 // This middleware extracts the token from the request header and adds it to the request object. Allowing us to validate the token in the tokenValidator middleware
 export const tokenExtractor = (
