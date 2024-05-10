@@ -7,6 +7,7 @@ import express from "express";
 import { errorHandler } from "./middleware/errorHandler";
 import { requestLogger } from "./middleware/requestLogger";
 import { unknownEndpoint } from "./middleware/unknownEndpoint";
+import { userRouter } from "./routes/user.routes";
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ app.use(requestLogger);
 app.get("/", (_req, res) => {
   res.status(200).send("<h1>Hello World! I am Alive!</h1>");
 });
+
+app.use("/api/users", userRouter);
 
 // Handle any async errors or unknownEndpoints
 app.use(unknownEndpoint);
