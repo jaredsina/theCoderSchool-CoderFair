@@ -8,7 +8,7 @@ export const requestLogger = (
 ) => {
   logger.info(`Method: ${req.method}`);
   logger.info(`Url: ${req.url}`);
-  logger.info(`Body: ${req.body}`);
+  logger.info(`Body: ${JSON.stringify(req.body)}`);
   logger.info("---------");
   next();
 };
