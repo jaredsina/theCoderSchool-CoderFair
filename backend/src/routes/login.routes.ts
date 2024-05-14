@@ -20,9 +20,6 @@ loginRouter.post("/", (async (
 ) => {
   // Validate request body
   const newLogin = toNewLogin(req.body);
-  if (!newLogin) {
-    return res.status(401).send("Login Failed: Missing username or password");
-  }
 
   const user = await User.findOne({ where: { username: newLogin.username } });
 
@@ -30,7 +27,7 @@ loginRouter.post("/", (async (
     user === null ? false : await compare(newLogin.password, user.passwordHash);
 
   if (!(user && passwordValid)) {
-    return res.status(401).json({ error: "invalid username or password" });
+    return res.status(401).json({ error: "Invalid username or password" });
   }
 
   const userForToken = {
@@ -43,6 +40,6 @@ loginRouter.post("/", (async (
   return res.status(200).json({
     token,
     username: user.username,
-    name: user.firstName + user.lastName,
+    name: user.firstName + " " + user.lastName,
   });
 }) as RequestHandler);
