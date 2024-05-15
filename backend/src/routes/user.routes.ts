@@ -1,22 +1,27 @@
 import { Request, RequestHandler, Response, Router } from "express";
 import { User } from "../db/models/index";
-import { RequestToken } from "../types/middleware.types";
 import bcrypt from "bcrypt";
-import { toNewUser } from "../utils/user.utils";
+import { parseDecodedToken, toNewUser } from "../utils/user.utils";
+import { tokenExtractor } from "../middleware/tokenExtractor";
+import { tokenValidator } from "../middleware/tokenValidator";
+import { RequestToken } from "../types/middleware.types";
 
 export const userRouter = Router();
 
 // Endpoint for getting a users information
-userRouter.get("/:id", (async (req: RequestToken, res: Response) => {
-  console.log(req.token, req.decodedToken);
+userRouter.get("/info", tokenExtractor, tokenValidator, (async (
+  req: RequestToken,
+  res: Response
+) => {
+  const { id } = parseDecodedToken(req.decodedToken);
 
-  const user = await User.findByPk(req.params.id);
+  const user = await User.findByPk(id);
 
   if (!user) {
-    res.status(404).send("No user found");
+    return res.status(404).send("No user found");
   }
 
-  res.status(200).json(user);
+  return res.status(200).json(user);
 }) as RequestHandler);
 
 userRouter.post("/", (async (req: Request, res: Response) => {
