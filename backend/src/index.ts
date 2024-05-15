@@ -10,6 +10,7 @@ import { unknownEndpoint } from "./middleware/unknownEndpoint";
 import { userRouter } from "./routes/user.routes";
 import { loginRouter } from "./routes/login.routes";
 import { coderfairRouter } from "./routes/coderfair.routes";
+import { projectRouter } from "./routes/project.routes";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.get("/", (_req, res) => {
 app.use("/api/login", loginRouter);
 app.use("/api/users", userRouter);
 app.use("/api/coderfairs", coderfairRouter);
+app.use("/api/projects", projectRouter);
 
 // Handle any async errors or unknownEndpoints
 app.use(unknownEndpoint);
