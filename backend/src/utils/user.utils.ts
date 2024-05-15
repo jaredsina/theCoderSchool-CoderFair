@@ -1,5 +1,23 @@
+import { DecodedToken } from "../types/user.types";
 import { newUser } from "../types/user.types";
-import { isObject, parseString } from "./index.utils";
+import { isObject, parseString, parseNumber } from "./index.utils";
+
+export const parseDecodedToken = (object: unknown): DecodedToken => {
+  if (
+    isObject(object) &&
+    "id" in object &&
+    "username" in object &&
+    "iat" in object
+  ) {
+    const decodedToken: DecodedToken = {
+      id: parseNumber(object.id),
+      username: parseString(object.username),
+      iat: parseNumber(object.iat),
+    };
+    return decodedToken;
+  }
+  throw new Error("Incorrect decoded token data");
+};
 
 // Validate request body before making a new user
 export const toNewUser = (object: unknown): newUser => {
