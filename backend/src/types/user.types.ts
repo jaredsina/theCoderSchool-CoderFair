@@ -5,3 +5,9 @@ export interface newUser {
   username: string;
   passwordHash: string;
 }
+
+export type DecodedToken = {
+  username: string;
+  id: number;
+  iat: number;
+};
