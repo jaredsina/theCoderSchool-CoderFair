@@ -20,3 +20,13 @@ export const parseString = (text: unknown): string => {
   }
   return text;
 };
+
+const isDate = (date: string): boolean => {
+  return Boolean(Date.parse(date));
+};
+export const parseDate = (date: unknown): Date => {
+  if (!date || !isString(date) || !isDate(date)) {
+    throw new Error("Incorrect or missing date " + date);
+  }
+  return new Date(date);
+};
