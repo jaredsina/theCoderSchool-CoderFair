@@ -7,6 +7,5 @@ export type newProject = {
   project_username: string;
   project_password: string;
   notes?: string;
-  student_id: number;
   coderfair_id: number;
 };
