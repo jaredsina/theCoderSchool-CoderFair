@@ -38,3 +38,7 @@ export type newLogin = {
 export type newRole = {
   name: string;
 };
+
+export type newQuestion = {
+  question: string;
+};
