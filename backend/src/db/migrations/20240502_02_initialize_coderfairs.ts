@@ -10,6 +10,11 @@ export const up = async (): Promise<void> => {
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
     fair_date: {
       type: DataTypes.DATE,
       allowNull: false,
