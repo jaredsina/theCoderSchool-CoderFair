@@ -9,7 +9,6 @@ export const toNewProject = (object: unknown): newProject => {
     "coding_language" in object &&
     "project_username" in object &&
     "project_password" in object &&
-    "student_id" in object &&
     "coderfair_id" in object
   ) {
     const project: newProject = {
@@ -25,7 +24,6 @@ export const toNewProject = (object: unknown): newProject => {
       project_username: parseString(object.project_username),
       project_password: parseString(object.project_password),
       notes: "notes" in object ? parseString(object.notes) : undefined,
-      student_id: parseNumber(object.student_id),
       coderfair_id: parseNumber(object.coderfair_id),
     };
     return project;
