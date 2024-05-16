@@ -34,3 +34,7 @@ export type newLogin = {
   username: string;
   password: string;
 };
+
+export type newRole = {
+  name: string;
+};
