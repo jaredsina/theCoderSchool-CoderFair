@@ -9,6 +9,11 @@ Coderfairs.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
     fairDate: {
       type: DataTypes.DATE,
       allowNull: false,
