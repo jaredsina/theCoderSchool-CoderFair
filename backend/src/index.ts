@@ -11,6 +11,7 @@ import { userRouter } from "./routes/user.routes";
 import { loginRouter } from "./routes/login.routes";
 import { coderfairRouter } from "./routes/coderfair.routes";
 import { projectRouter } from "./routes/project.routes";
+import { rolesRouter } from "./routes/roles.routes";
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use("/api/login", loginRouter);
 app.use("/api/users", userRouter);
 app.use("/api/coderfairs", coderfairRouter);
 app.use("/api/projects", projectRouter);
+app.use("/api/roles", rolesRouter);
 
 // Handle any async errors or unknownEndpoints
 app.use(unknownEndpoint);
