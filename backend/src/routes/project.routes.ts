@@ -1,11 +1,10 @@
 import { RequestHandler, Response, Router } from "express";
 import { Project } from "../db/models/index";
-import { toNewProject } from "../utils/projects.util";
 import bcrypt from "bcrypt";
 import { tokenExtractor } from "../middleware/tokenExtractor";
 import { tokenValidator } from "../middleware/tokenValidator";
 import { RequestToken } from "../types/middleware.types";
-import { parseDecodedToken } from "../utils/user.utils";
+import { parseDecodedToken, toNewProject } from "../utils/routes.util";
 export const projectRouter = Router();
 
 projectRouter.get("/", (async (_req, res: Response) => {

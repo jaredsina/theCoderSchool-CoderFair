@@ -5,7 +5,7 @@ import {
   Response,
   Router,
 } from "express";
-import { toNewLogin } from "../utils/login.utils";
+import { toNewLogin } from "../utils/routes.util";
 import { User } from "../db/models/index";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";

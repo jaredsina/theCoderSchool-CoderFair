@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response, Router } from "express";
-import { User } from "../db/models/index";
+import { Coderfairs, Project, User } from "../db/models/index";
 import bcrypt from "bcrypt";
-import { parseDecodedToken, toNewUser } from "../utils/user.utils";
+import { parseDecodedToken, toNewUser } from "../utils/routes.util";
 import { tokenExtractor } from "../middleware/tokenExtractor";
 import { tokenValidator } from "../middleware/tokenValidator";
 import { RequestToken } from "../types/middleware.types";

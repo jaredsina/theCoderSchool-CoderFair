@@ -1,6 +1,6 @@
 import { Request, RequestHandler, Response, Router } from "express";
 import { Coderfairs } from "../db/models/index";
-import { toNewCoderfair } from "../utils/coderfairs.util";
+import { toNewCoderfair } from "../utils/routes.util";
 
 export const coderfairRouter = Router();
 
