@@ -79,6 +79,7 @@ export class Coderfairs extends Model<
   InferCreationAttributes<Coderfairs>
 > {
   declare id: CreationOptional<number>;
+  declare name: string;
   declare fairDate: Date;
   declare description: string | null;
 
