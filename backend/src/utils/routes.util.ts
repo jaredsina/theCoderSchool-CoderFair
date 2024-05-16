@@ -5,6 +5,7 @@ import {
   newProject,
   CoderFair,
   newRole,
+  newQuestion,
 } from "../types/routes.types";
 import { isObject, parseString, parseNumber, parseDate } from "./index.utils";
 
@@ -112,4 +113,14 @@ export const toNewRole = (object: unknown): newRole => {
     return newRole;
   }
   throw new Error("Incorrect data when creating new role");
+};
+
+export const toNewQuestion = (object: unknown): newQuestion => {
+  if (isObject(object) && "question" in object) {
+    const newQuestion: newQuestion = {
+      question: parseString(object.question),
+    };
+    return newQuestion;
+  }
+  throw new Error("Incorrect data when creating new question");
 };
