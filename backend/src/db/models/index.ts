@@ -20,6 +20,12 @@ Coderfairs.hasMany(Project, {
   as: "projects",
 });
 
+Project.hasOne(Coderfairs, {
+  sourceKey: "coderfair_id",
+  foreignKey: "id",
+  as: "coderfairs",
+});
+
 User.belongsToMany(Coderfairs, {
   through: Judges,
   sourceKey: "id",
