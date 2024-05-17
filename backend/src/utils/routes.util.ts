@@ -6,6 +6,8 @@ import {
   CoderFair,
   newRole,
   newQuestion,
+  newGrade,
+  newQuestionGrade,
 } from "../types/routes.types";
 import { isObject, parseString, parseNumber, parseDate } from "./index.utils";
 
@@ -123,4 +125,33 @@ export const toNewQuestion = (object: unknown): newQuestion => {
     return newQuestion;
   }
   throw new Error("Incorrect data when creating new question");
+};
+
+export const toNewGrade = (object: unknown): newGrade => {
+  if (isObject(object) && "judge_id" in object && "project_id" in object) {
+    const newGrade: newGrade = {
+      judge_id: parseNumber(object.judge_id),
+      project_id: parseNumber(object.project_id),
+      overall_comments:
+        "overall_comments" in object
+          ? parseString(object.overall_comments)
+          : undefined,
+    };
+    return newGrade;
+  }
+  throw new Error("Incorrect or missing data when creating new grade");
+};
+
+export const toNewQuestionGrade = (object: unknown): newQuestionGrade => {
+  if (isObject(object) && "question_id" in object && "score" in object) {
+    const newQuestionGrade: newQuestionGrade = {
+      question_id: parseNumber(object.question_id),
+      score: parseNumber(object.score),
+      comments: "comments" in object ? parseString(object.comments) : undefined,
+    };
+    return newQuestionGrade;
+  }
+  throw new Error(
+    "Incorrect or missing data when creating a new grade for a question"
+  );
 };
