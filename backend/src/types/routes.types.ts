@@ -42,3 +42,15 @@ export type newRole = {
 export type newQuestion = {
   question: string;
 };
+
+export type newGrade = {
+  judge_id: number;
+  project_id: number;
+  overall_comments?: string;
+};
+
+export type newQuestionGrade = {
+  question_id: number;
+  score: number;
+  comments?: string;
+};
