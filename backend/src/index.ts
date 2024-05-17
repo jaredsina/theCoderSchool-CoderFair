@@ -13,6 +13,7 @@ import { coderfairRouter } from "./routes/coderfair.routes";
 import { projectRouter } from "./routes/project.routes";
 import { rolesRouter } from "./routes/roles.routes";
 import { questionsRouter } from "./routes/questions.routes";
+import { gradesRouter } from "./routes/grades.routes";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use("/api/coderfairs", coderfairRouter);
 app.use("/api/projects", projectRouter);
 app.use("/api/roles", rolesRouter);
 app.use("/api/questions", questionsRouter);
+app.use("/api/grades", gradesRouter);
 
 // Handle any async errors or unknownEndpoints
 app.use(unknownEndpoint);
