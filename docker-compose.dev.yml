@@ -6,7 +6,8 @@ services:
     ports:
       - ${CLIENT_PORT}:${CLIENT_PORT}
     volumes:
-      - ./client:/usr/src/app/client
+      - ./client:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
     container_name: coderfair-client-dev-container
   server:
     image: coderfair-backend-dev
@@ -27,8 +28,16 @@ services:
       - ${DB_PORT}:${DB_PORT}
     shm_size: 128mb
     volumes:
-      - ./postgres_data:/var/lib/postgressql/data
+      - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: "${DB_PASSWORD}"
     container_name: coderfair-db-dev-container
 # docker run -it -v "$(pwd):/usr/src/app/backend" toolkit-backend-dev bash
+
+volumes:
+  # Fix missing linux modules in container
+  # Link: https://github.com/vitejs/vite/discussions/15532
+  node_modules:
+
+  # Persist data
+  postgres_data:
