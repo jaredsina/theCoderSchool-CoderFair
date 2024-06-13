@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: { node: true, es2020: true },
   extends: ['eslint:recommended'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules/*'],
   overrides: [
     {
@@ -45,6 +46,28 @@ module.exports = {
           { allowConstantExport: true },
         ],
         'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+        'import/no-cycle': 'error', // disallow cyclic dependencies
+        'linebreak-style': ['error', 'unix'], // enforce consistent linebreak style
+        'react/prop-types': 'off', // disable prop-types as we use TypeScript for type checking
+        'import/order': [
+          'error',
+          {
+            groups: [
+              'builtin',
+              'external',
+              'internal',
+              'parent',
+              'sibling',
+              'index',
+              'object',
+            ], // enforce a convention in module import order
+            'newlines-between': 'always', // require a newline between import groups
+            alphabetize: { order: 'asc', caseInsensitive: true }, // enforce alphabetization
+          },
+        ],
+        'import/default': 'off', // disallow default exports
+        'import/no-named-as-default': 'off', // disallow named exports as the default export
+        'import/no-named-as-default-member': 'off', // disallow named exports that are not grouped with a default export
         'import/no-restricted-paths': [
           'error',
           {
@@ -71,6 +94,11 @@ module.exports = {
             ],
           },
         ],
+        '@typescript-eslint/no-unused-vars': ['error'], // disallow unused variables
+        '@typescript-eslint/explicit-function-return-type': ['off'], // require explicit return types on functions and class methods
+        '@typescript-eslint/explicit-module-boundary-types': ['off'], // require explicit return and argument types on exported functions' and classes' public class methods
+        '@typescript-eslint/no-explicit-any': ['error'], // disallow usage of the any type
+        '@typescript-eslint/no-empty-function': ['off'], // disallow empty functions
       },
     },
   ],
