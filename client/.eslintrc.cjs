@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   env: { node: true, es2020: true },
-  extends: ['eslint:recommended'],
+  extends: ['eslint:recommended', 'plugin:storybook/recommended'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules/*'],
   overrides: [
