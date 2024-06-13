@@ -6,14 +6,16 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "allowJs": true /* Allow JavaScript files to be imported */,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["vite/client", "vitest/globals"],
 
     /* Linting */
     "strict": true,
@@ -29,5 +31,6 @@
     }
   },
   "include": ["src"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
