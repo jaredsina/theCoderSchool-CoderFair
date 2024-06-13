@@ -5,7 +5,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules/*'],
   overrides: [
     {
-      plugins: ['react-refresh'],
+      plugins: ['react-refresh', 'check-file'],
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
       settings: {
@@ -29,6 +29,15 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'check-file/filename-naming-convention': [
+          'error',
+          { '**/*.{ts,tsx}': 'KEBAB_CASE' },
+          { ignoreMiddleExtansions: true },
+        ],
+        'check-file/filename-naming-convention': [
+          'error',
+          { 'src/**/!(__tests__)': 'KEBAB_CASE' },
+        ],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'react-refresh/only-export-components': [
