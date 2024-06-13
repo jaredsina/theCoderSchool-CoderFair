@@ -32,12 +32,12 @@ module.exports = {
       rules: {
         'check-file/filename-naming-convention': [
           'error',
-          { '**/*.{ts,tsx}': 'KEBAB_CASE' },
-          { ignoreMiddleExtansions: true },
-        ],
-        'check-file/filename-naming-convention': [
-          'error',
-          { 'src/**/!(__tests__)': 'KEBAB_CASE' },
+          {
+            '**/*.{ts,tsx}': 'KEBAB_CASE',
+          },
+          {
+            ignoreMiddleExtensions: true,
+          },
         ],
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -99,6 +99,18 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': ['off'], // require explicit return and argument types on exported functions' and classes' public class methods
         '@typescript-eslint/no-explicit-any': ['error'], // disallow usage of the any type
         '@typescript-eslint/no-empty-function': ['off'], // disallow empty functions
+      },
+    },
+    {
+      plugins: ['check-file'],
+      files: ['src/**/!(__tests__)/*'],
+      rules: {
+        'check-file/folder-naming-convention': [
+          'error',
+          {
+            '**/*': 'KEBAB_CASE',
+          },
+        ],
       },
     },
   ],
