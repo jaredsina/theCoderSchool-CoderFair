@@ -28,6 +28,7 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
         'plugin:prettier/recommended',
+        'plugin:@tanstack/eslint-plugin-query/recommended',
       ],
       rules: {
         'check-file/filename-naming-convention': [
