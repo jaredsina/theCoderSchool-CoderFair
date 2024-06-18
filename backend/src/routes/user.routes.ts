@@ -15,7 +15,19 @@ userRouter.get("/info", tokenExtractor, tokenValidator, (async (
 ) => {
   const { id } = parseDecodedToken(req.decodedToken);
 
-  const user = await User.findByPk(id);
+  const user = await User.findByPk(id, {
+    attributes: {
+      exclude: ["passwordHash", "id", "createdAt", "updatedAt", "email"],
+    },
+    include: [
+      {
+        model: Project,
+        attributes: { exclude: ["student_id"] },
+        include: [{ model: Coderfairs, as: "coderfairs" }],
+        as: "projects",
+      },
+    ],
+  });
 
   if (!user) {
     return res.status(404).send("No user found");
