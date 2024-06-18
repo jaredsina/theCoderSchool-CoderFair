@@ -1,9 +1,22 @@
 import { Sequelize } from "sequelize";
-import { DATABASE_URL } from "../utils/config";
+import { DATABASE_URL, NODE_ENV } from "../utils/config";
 import { SequelizeStorage, Umzug, UmzugOptions } from "umzug";
 
 // Sequelize streamlines interaction between the application and our postgresql database
-export const sequelize: Sequelize = new Sequelize(DATABASE_URL);
+export const sequelize: Sequelize = new Sequelize(
+  DATABASE_URL,
+  NODE_ENV === "production"
+    ? {
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        },
+        ssl: true, // This is required by Render
+      }
+    : {}
+);
 
 // Configuration for the Umzug migrators
 const migrationConf: UmzugOptions = {
