@@ -27,6 +27,18 @@ const parseSecret = (secret: unknown): string => {
   return secret;
 };
 
+const parseNodeEnv = (nodeEnv: unknown): string => {
+  if (
+    !nodeEnv ||
+    !(typeof nodeEnv === "string") ||
+    !["development", "test", "production"].includes(nodeEnv)
+  ) {
+    throw new Error("Incorrect or missing NODE_ENV " + nodeEnv);
+  }
+  return nodeEnv;
+};
+
 export const DATABASE_URL: string = parseDbUrl(process.env.DATABASE_URL);
 export const SERVER_PORT: number = parsePort(process.env.SERVER_PORT);
 export const SECRET: string = parseSecret(process.env.SECRET);
+export const NODE_ENV: string = parseNodeEnv(process.env.NODE_ENV);
