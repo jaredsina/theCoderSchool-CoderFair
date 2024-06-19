@@ -18,6 +18,7 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     volumes:
       - ./backend:/usr/src/app/backend
+      - /usr/src/app/backend/node_modules # Fix node_modules from machine being used in container
     container_name: coderfair-backend-server-dev-container
     depends_on:
       - db
