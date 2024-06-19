@@ -21,7 +21,6 @@ COPY package*.json ./
 RUN npm ci -omit=dev
 
 COPY --from=build /usr/src/app/build /usr/src/app/build
-COPY .env ./
 
 EXPOSE 3001
 
