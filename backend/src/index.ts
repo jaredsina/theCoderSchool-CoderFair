@@ -15,10 +15,15 @@ import { rolesRouter } from "./routes/roles.routes";
 import { questionsRouter } from "./routes/questions.routes";
 import { gradesRouter } from "./routes/grades.routes";
 
+import cors from "cors";
+
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+// Allow Cross-Origin requests
+app.use(cors());
 
 // Easily view request info on the server logs
 app.use(requestLogger);
